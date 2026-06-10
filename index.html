@@ -17,7 +17,7 @@
 
 body{
     background:#ffeef3;
-    font-family:'Baloo 2',cursive;
+    font-family:'Baloo 2', cursive;
     text-align:center;
     min-height:100vh;
     overflow:hidden;
@@ -45,6 +45,7 @@ body{
 
 .buttons{
     margin-top:25px;
+    position:relative;
 }
 
 button{
@@ -54,6 +55,7 @@ button{
     font-size:22px;
     color:white;
     cursor:pointer;
+    transition:transform 0.2s ease;
 }
 
 #yes{
@@ -70,7 +72,7 @@ button{
     color:#ff4fa8;
     font-size:24px;
     font-weight:bold;
-    min-height:50px;
+    min-height:60px;
 }
 
 .footer{
@@ -139,7 +141,7 @@ const messages = [
     "Em iu anh lắm lắm ạ ❤️",
     "Anh đẹp try tha lỗi cho bé nha nha 🥰",
     "Bé hứa ngoan hơn ạ 🥺",
-    "Anh đừng giận bé nũa được hong ạ 😭",
+    "Anh đừng giận bé nữa được hong ạ 😭",
     "Em iu anh nhất luôn đó ❤️",
     "Em nhớ anh lắm ạ 🥹",
     "Anh iu tha lỗi cho bé nhaaa 💕"
@@ -147,6 +149,9 @@ const messages = [
 
 let currentImage = 0;
 let rejectCount = 0;
+
+let noScale = 1;
+let yesScale = 1;
 
 const slide = document.getElementById("slide");
 const noBtn = document.getElementById("no");
@@ -170,6 +175,12 @@ function moveButton(){
     if(rejectCount <= messages.length){
         message.innerHTML = messages[rejectCount - 1];
     }
+
+    noScale *= 0.88;
+    noBtn.style.transform = `scale(${noScale})`;
+
+    yesScale *= 1.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
 
     if(rejectCount >= 10){
         noBtn.style.display = "none";
@@ -225,7 +236,7 @@ yesBtn.onclick = function(){
     }
 
     setTimeout(() => {
-        alert("Cảm ơn anh iu đã tha lỗi cho emm, iu anh nhìu ạa😚");
+        alert("Cảm ơn anh iu đã tha lỗi cho emm, iu anh nhìu ạa 😚");
     }, 500);
 };
 
