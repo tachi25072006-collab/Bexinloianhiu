@@ -3,108 +3,169 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anh iu ơi 🥺</title>
 
-<title>Anh iu ơi</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-background:#f9ecef;
-font-family:'Baloo 2',cursive;
-text-align:center;
-margin:0;
-padding:20px;
-overflow:hidden;
+    background:#ffeef3;
+    font-family:'Baloo 2',cursive;
+    text-align:center;
+    min-height:100vh;
+    overflow:hidden;
+    padding:20px;
 }
 
-.cat{
-width:300px;
-max-width:85%;
-margin-top:40px;
+#slide{
+    width:320px;
+    max-width:90%;
+    border-radius:20px;
+    margin-top:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
-.text{
-font-size:42px;
-color:#ff3fa4;
-line-height:1.2;
+.title{
+    color:#ff3fa4;
+    font-size:40px;
+    line-height:1.2;
+    margin:20px auto;
+}
+
+.sub{
+    color:#ff77b7;
+    font-size:22px;
+}
+
+.buttons{
+    margin-top:25px;
 }
 
 button{
-padding:15px 30px;
-font-size:22px;
-border:none;
-border-radius:10px;
-color:white;
-cursor:pointer;
-margin:10px;
+    border:none;
+    border-radius:12px;
+    padding:15px 28px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
 }
 
 #yes{
-background:#35c84a;
+    background:#37c84d;
 }
 
 #no{
-background:#f44336;
-position:relative;
+    background:#f44336;
+    margin-left:10px;
 }
 
-.heart{
-position:fixed;
-font-size:30px;
-animation:fly 3s linear forwards;
-}
-
-@keyframes fly{
-from{
-opacity:1;
-transform:translateY(0);
-}
-to{
-opacity:0;
-transform:translateY(-400px);
-}
+#message{
+    margin-top:20px;
+    color:#ff4fa8;
+    font-size:24px;
+    font-weight:bold;
+    min-height:40px;
 }
 
 .footer{
-margin-top:30px;
-color:#ff8db6;
-font-size:22px;
+    margin-top:20px;
+    color:#ff7cb8;
+    font-size:22px;
 }
 
+.heart{
+    position:fixed;
+    font-size:30px;
+    animation:fly 3s linear forwards;
+}
+
+@keyframes fly{
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-500px);
+    }
+}
 </style>
 </head>
 
 <body>
 
-<img src="cat.png" class="cat">
+<img id="slide" src="1.jpg">
 
-<div class="text">
-Anh iu ơi cho em xin lỗi nhóoooo 😭<br>
-Anh hong chọn hoặc thoát là tha lỗi cho em đó
+<div class="title">
+Anh iu ơi cho em xin lỗi nhóoooo 😭
 </div>
 
-<br>
+<div class="sub">
+Anh hong chọn hoặc thoát là tha lỗi cho em đó 🥺
+</div>
 
-<button id="yes">Anh tha lỗi</button>
-<button id="no">Không bao giờ</button>
+<div class="buttons">
+    <button id="yes">Anh tha lỗi ❤️</button>
+    <button id="no">Không bao giờ 😤</button>
+</div>
+
+<div id="message"></div>
 
 <div class="footer">
-♥ Em yêu anh nhiều lắm ạ
+♥ Em yêu anh nhiều lắm ạ ♥
 </div>
 
 <script>
 
+const images=[
+"1.jpg",
+"2.jpg",
+"3.jpg",
+"4.jpg",
+"5.jpg"
+];
+
+let current=0;
+let rejectCount=0;
+
 const noBtn=document.getElementById("no");
 
 function moveButton(){
-let x=Math.random()*(window.innerWidth-150);
-let y=Math.random()*(window.innerHeight-100);
 
-noBtn.style.position="fixed";
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
+    rejectCount++;
+
+    current=(current+1)%images.length;
+    document.getElementById("slide").src=images[current];
+
+    if(rejectCount===5){
+        document.getElementById("message").innerHTML=
+        "Anh iu suy nghĩ lại đi mà 🥺";
+    }
+
+    if(rejectCount===8){
+        document.getElementById("message").innerHTML=
+        "Em biết anh thương em mà đúng honggg 😭";
+    }
+
+    if(rejectCount>=10){
+        noBtn.style.display="none";
+        document.getElementById("message").innerHTML=
+        "Nút không đồng ý bỏ nhà đi rồi 😆";
+        return;
+    }
+
+    let x=Math.random()*(window.innerWidth-180);
+    let y=Math.random()*(window.innerHeight-100);
+
+    noBtn.style.position="fixed";
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
 }
 
 noBtn.addEventListener("mouseover",moveButton);
@@ -112,24 +173,32 @@ noBtn.addEventListener("touchstart",moveButton);
 
 document.getElementById("yes").onclick=function(){
 
-alert("Yayyyy ❤️ Em biết anh iu sẽ tha lỗi cho em mà!");
+    document.getElementById("message").innerHTML=
+    "Yayyyy ❤️ Em biết anh iu sẽ tha lỗi cho em mà!";
 
-for(let i=0;i<40;i++){
+    for(let i=0;i<60;i++){
 
-let heart=document.createElement("div");
+        const heart=document.createElement("div");
 
-heart.innerHTML="❤️";
-heart.className="heart";
+        heart.className="heart";
+        heart.innerHTML="❤️";
 
-heart.style.left=Math.random()*window.innerWidth+"px";
-heart.style.top=window.innerHeight+"px";
+        heart.style.left=
+        Math.random()*window.innerWidth+"px";
 
-document.body.appendChild(heart);
+        heart.style.top=
+        window.innerHeight+"px";
 
-setTimeout(()=>{
-heart.remove();
-},3000);
-}
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+    }
+
+    setTimeout(()=>{
+        alert("Cảm ơn anh iu đã tha lỗi cho em ❤️");
+    },500);
 }
 
 </script>
