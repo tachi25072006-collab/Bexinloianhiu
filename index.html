@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +19,7 @@
 
 body{
     background:#ffeef3;
-    font-family:'Baloo 2',cursive;
+    font-family:'Baloo 2', cursive;
     text-align:center;
     min-height:100vh;
     overflow:hidden;
@@ -100,6 +101,7 @@ button{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -115,7 +117,7 @@ Anh hong chọn hoặc thoát là tha lỗi cho em đó 🥺
 </div>
 
 <div class="buttons">
-    <button id="yes">Thoi đượt gòi ❤️</button>
+    <button id="yes">Thoi đượt gòi 😒</button>
     <button id="no">Không bao giờ 😤</button>
 </div>
 
@@ -138,8 +140,9 @@ const images = [
 let current = 0;
 let rejectCount = 0;
 
-const noBtn = document.getElementById("no");
 const slide = document.getElementById("slide");
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 const message = document.getElementById("message");
 
 function moveButton(){
@@ -176,15 +179,17 @@ function moveButton(){
 noBtn.addEventListener("mouseover", moveButton);
 noBtn.addEventListener("touchstart", moveButton);
 
-document.getElementById("yes").onclick = function(){
+yesBtn.onclick = function(){
+
+    slide.src = "7.jpg";
+
     document.getElementById("titleText").style.display = "none";
     document.getElementById("subText").style.display = "none";
 
-    slide.src = "7.jpg";
-}
+    noBtn.style.display = "none";
 
     message.innerHTML =
-    "Yayyyy ❤️ Em biết anh iu sẽ tha lỗi cho em màa 😚!";
+    "Yayyyy ❤️ Em biết anh iu sẽ tha lỗi cho em mà!";
 
     for(let i = 0; i < 60; i++){
 
@@ -207,7 +212,7 @@ document.getElementById("yes").onclick = function(){
     }
 
     setTimeout(() => {
-        alert("Cảm ơn anh iu đã tha lỗi cho emm, iu anh nhìu ạaa 😚");
+        alert("Cảm ơn anh iu đã tha lỗi cho emm, iu anh nhìu ạa 😚");
     }, 500);
 };
 
