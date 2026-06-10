@@ -19,7 +19,7 @@
 
 body{
     background:#ffeef3;
-    font-family:'Baloo 2', cursive;
+    font-family:'Baloo 2',cursive;
     text-align:center;
     min-height:100vh;
     overflow:hidden;
@@ -73,7 +73,7 @@ button{
     color:#ff4fa8;
     font-size:24px;
     font-weight:bold;
-    min-height:40px;
+    min-height:50px;
 }
 
 .footer{
@@ -85,8 +85,8 @@ button{
 .heart{
     position:fixed;
     font-size:30px;
-    animation:fly 3s linear forwards;
     pointer-events:none;
+    animation:fly 3s linear forwards;
 }
 
 @keyframes fly{
@@ -137,7 +137,19 @@ const images = [
     "6.jpg"
 ];
 
-let current = 0;
+const messages = [
+    "Em bíc lỗi rùi ạ 🥺",
+    "Bé xin lỗi anh nhìu ạ 😭",
+    "Em iu anh lắm lắm ạ ❤️",
+    "Anh đẹp try tha lỗi cho bé nha nha 🥰",
+    "Bé hứa ngoan hơn ạ 🥺",
+    "Anh đừng giận em nũa được hong 😭",
+    "Em iu anh nhất luôn đó ❤️",
+    "Em nhớ anh lắm ạ 🥹",
+    "Anh iu tha lỗi cho tui nhaaa 💕"
+];
+
+let currentImage = 0;
 let rejectCount = 0;
 
 const slide = document.getElementById("slide");
@@ -149,17 +161,18 @@ function moveButton(){
 
     rejectCount++;
 
-    if(current < images.length){
-        slide.src = images[current];
-        current++;
+    if(rejectCount === 1){
+        document.getElementById("titleText").style.display = "none";
+        document.getElementById("subText").style.display = "none";
     }
 
-    if(rejectCount === 5){
-        message.innerHTML = "Anh iu suy nghĩ lại đi mà 🥺";
+    if(currentImage < images.length){
+        slide.src = images[currentImage];
+        currentImage++;
     }
 
-    if(rejectCount === 8){
-        message.innerHTML = "Em biết anh thương em mà đúng honggg 😭";
+    if(rejectCount <= messages.length){
+        message.innerHTML = messages[rejectCount - 1];
     }
 
     if(rejectCount >= 10){
@@ -212,7 +225,7 @@ yesBtn.onclick = function(){
     }
 
     setTimeout(() => {
-        alert("Cảm ơn anh iu đã tha lỗi cho emm, iu anh nhìu ạa 😚");
+        alert("Cảm ơn anh iu đã tha lỗi cho emm, em iu anh nhìu ạaa 😚");
     }, 500);
 };
 
