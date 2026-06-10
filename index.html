@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Anh iu ơi 🥺</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -83,6 +85,7 @@ button{
     position:fixed;
     font-size:30px;
     animation:fly 3s linear forwards;
+    pointer-events:none;
 }
 
 @keyframes fly{
@@ -95,12 +98,13 @@ button{
         transform:translateY(-500px);
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<img id="slide" src="1.gif">
+<img id="slide" src="1.gif" alt="Ảnh xin lỗi">
 
 <div class="title">
 Anh iu ơi cho em xin lỗi nhóoooo 😭
@@ -123,83 +127,86 @@ Anh hong chọn hoặc thoát là tha lỗi cho em đó 🥺
 
 <script>
 
-const images=[
-"1.jpg",
-"2.jpg",
-"3.jpg",
-"4.jpg",
-"5.jpg"
+const images = [
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+    "5.jpg",
+    "6.jpg"
 ];
 
-let current=0;
-let rejectCount=0;
+let current = 0;
+let rejectCount = 0;
 
-const noBtn=document.getElementById("no");
+const noBtn = document.getElementById("no");
+const slide = document.getElementById("slide");
+const message = document.getElementById("message");
 
 function moveButton(){
 
     rejectCount++;
 
-    current=(current+1)%images.length;
-    document.getElementById("slide").src=images[current];
-
-    if(rejectCount===5){
-        document.getElementById("message").innerHTML=
-        "Anh iu suy nghĩ lại đi mà 🥺";
+    if(current < images.length){
+        slide.src = images[current];
+        current++;
     }
 
-    if(rejectCount===8){
-        document.getElementById("message").innerHTML=
-        "Em biết anh thương em mà đúng honggg 😭";
+    if(rejectCount === 5){
+        message.innerHTML = "Anh iu suy nghĩ lại đi mà 🥺";
     }
 
-    if(rejectCount>=10){
-        noBtn.style.display="none";
-        document.getElementById("message").innerHTML=
-        "Nút không đồng ý bỏ nhà đi rồi 😆";
+    if(rejectCount === 8){
+        message.innerHTML = "Em biết anh thương em mà đúng honggg 😭";
+    }
+
+    if(rejectCount >= 10){
+        noBtn.style.display = "none";
+        message.innerHTML = "Nút không đồng ý bỏ nhà đi rồi 😆";
         return;
     }
 
-    let x=Math.random()*(window.innerWidth-180);
-    let y=Math.random()*(window.innerHeight-100);
+    const x = Math.random() * (window.innerWidth - 180);
+    const y = Math.random() * (window.innerHeight - 100);
 
-    noBtn.style.position="fixed";
-    noBtn.style.left=x+"px";
-    noBtn.style.top=y+"px";
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseover",moveButton);
-noBtn.addEventListener("touchstart",moveButton);
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 
-document.getElementById("yes").onclick=function(){
+document.getElementById("yes").onclick = function(){
 
-    document.getElementById("message").innerHTML=
+    slide.src = "accept.jpg";
+
+    message.innerHTML =
     "Yayyyy ❤️ Em biết anh iu sẽ tha lỗi cho em mà!";
 
-    for(let i=0;i<60;i++){
+    for(let i = 0; i < 60; i++){
 
-        const heart=document.createElement("div");
+        const heart = document.createElement("div");
 
-        heart.className="heart";
-        heart.innerHTML="❤️";
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
 
-        heart.style.left=
-        Math.random()*window.innerWidth+"px";
+        heart.style.left =
+        Math.random() * window.innerWidth + "px";
 
-        heart.style.top=
-        window.innerHeight+"px";
+        heart.style.top =
+        window.innerHeight + "px";
 
         document.body.appendChild(heart);
 
-        setTimeout(()=>{
+        setTimeout(() => {
             heart.remove();
-        },3000);
+        }, 3000);
     }
 
-    setTimeout(()=>{
+    setTimeout(() => {
         alert("Cảm ơn anh iu đã tha lỗi cho em ❤️");
-    },500);
-}
+    }, 500);
+};
 
 </script>
 
