@@ -106,11 +106,11 @@ button{
 
 <img id="slide" src="1.gif" alt="Ảnh xin lỗi">
 
-<div class="title">
+<div class="title" id="titleText">
 Anh iu ơi cho em xin lỗi nhóoooo 😭
 </div>
 
-<div class="sub">
+<div class="sub" id="subText">
 Anh hong chọn hoặc thoát là tha lỗi cho em đó 🥺
 </div>
 
@@ -177,6 +177,8 @@ noBtn.addEventListener("mouseover", moveButton);
 noBtn.addEventListener("touchstart", moveButton);
 
 document.getElementById("yes").onclick = function(){
+    document.getElementById("titleText").style.display = "none";
+document.getElementById("subText").style.display = "none";
 
     slide.src = "7.jpg";
 
